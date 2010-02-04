@@ -68,6 +68,21 @@ module Pickle
         Factory.create(@name, attrs)
       end
     end
+    
+    # dupe adapter
+    class Dupe < Adapter
+      def self.factories
+        (::Dupe.models.values rescue []).map {|model| new(model)}
+      end
+      
+      def initialize(model)
+        @klass, @name = model.name.to_s.classify.constantize, model.name.to_s
+      end
+    
+      def create(attrs = {})
+        ::Dupe.create(@name, attrs)
+      end
+    end
         
     # fallback active record adapter
     class ActiveRecord < Adapter
