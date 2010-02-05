@@ -24,3 +24,8 @@ module Pickle
     end
   end
 end
+
+#TODO GC 02/05/2010 Not sure if this is the right way to load dupe specific overwrites
+if Pickle.config.adapters.include?(:dupe)
+  require 'pickle/dupe_session'
+end

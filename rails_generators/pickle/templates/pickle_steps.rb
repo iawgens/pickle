@@ -43,6 +43,9 @@ Then(/^#{capture_model} should be #{capture_model}$/) do |a, b|
 end
 
 # assert model is in another model's has_many assoc
+puts "#{capture_model} should be (?:in|one of|amongst) #{capture_model}(?:'s)? (\w+)$"
+require 'ruby-debug'
+debugger
 Then(/^#{capture_model} should be (?:in|one of|amongst) #{capture_model}(?:'s)? (\w+)$/) do |target, owner, association|
   model!(owner).send(association).should include(model!(target))
 end

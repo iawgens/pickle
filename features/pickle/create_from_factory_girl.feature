@@ -13,6 +13,7 @@ Feature: I can easily create models from my factories
     Then a fork should exist with name: "Forky"
     And the fork should not be completely rusty
     
+  @fancy_fg_association
   Scenario: I create some forks, and some tines
     Given a fork: "one" exists
     And a tine exists with fork: fork "one"
